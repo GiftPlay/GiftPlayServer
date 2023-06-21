@@ -1,8 +1,6 @@
 package com.unibta.PMIII.models;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 
 import java.util.UUID;
 
@@ -10,6 +8,7 @@ import java.util.UUID;
 @Table(name = "tb_gift_card")
 public class GiftCard {
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String company;
     private UUID cardNumber;
