@@ -46,4 +46,8 @@ public class UserService {
 
         return ret.orElse(new User());
     }
+
+    public User register(User user) {
+        return userRepository.save(user);
+    }
 }

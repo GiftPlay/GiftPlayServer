@@ -56,5 +56,11 @@ public class UserController {
 
         return ResponseEntity.status(HttpStatus.OK).body(ret);
     }
+
+    @PostMapping("v2/login")
+    public ResponseEntity<User> register(@RequestBody User user) {
+        User ret = userService.register(user);
+        return ResponseEntity.status(HttpStatus.CREATED).body(ret);
+    }
 }
 
