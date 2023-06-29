@@ -1,6 +1,7 @@
 package com.unibta.PMIII.controllers;
 
 import com.unibta.PMIII.models.GiftCard;
+import com.unibta.PMIII.models.GiftCardDtoMobile;
 import com.unibta.PMIII.services.GiftCardService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -45,5 +46,11 @@ public class GiftCardController {
     public ResponseEntity<GiftCard> deleteOne(@PathVariable Long id) {
         giftCardService.deleteCardById(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+    }
+
+    @GetMapping("/gift-card/mobile")
+    public ResponseEntity<GiftCardDtoMobile> getAllData() {
+        GiftCardDtoMobile giftCard = new GiftCardDtoMobile(giftCardService.getAll());
+        return ResponseEntity.status(HttpStatus.OK).body(giftCard);
     }
 }

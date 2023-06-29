@@ -1,4 +1,4 @@
-package com.unibta.PMIII.controllers;
+package com.unibta.PMIII.models;
 
 import com.unibta.PMIII.models.Order;
 
