@@ -52,4 +52,10 @@ public class OrderController {
         orderService.deleteOrderById(id);
         return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
+
+    @GetMapping("/order/mobile")
+    public ResponseEntity<OrderDtoMobile> getAllData() {
+        OrderDtoMobile order = new OrderDtoMobile(orderService.getAll());
+        return ResponseEntity.status(HttpStatus.OK).body(order);
+    }
 }
