@@ -2,6 +2,7 @@ package com.unibta.PMIII.services;
 
 import com.unibta.PMIII.enums.OrderStatus;
 import com.unibta.PMIII.models.Order;
+import com.unibta.PMIII.models.User;
 import com.unibta.PMIII.repositories.OrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,7 +17,18 @@ public class OrderService {
     @Autowired
     OrderRepository orderRepository;
 
+    @Autowired
+    UserService userService;
+
     public void createOrder(Order order) {
+        if (order.getBuyerName() == null || order.getBuyerPhone() == null) {
+           User user = userService.getById(order.getBuyerId());
+           if (user != null) {
+               order.setBuyerName(user.getName());
+               order.setBuyerPhone(user.getPhone());
+           }
+        }
+
         orderRepository.save(order);
     }
 
