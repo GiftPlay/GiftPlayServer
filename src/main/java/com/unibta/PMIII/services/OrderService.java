@@ -22,9 +22,9 @@ public class OrderService {
 
     public List<Order> getAll() {
         if (orderRepository.findAll().isEmpty()) {
-            createOrder(new Order(UUID.randomUUID(), new Date(), "Marcos", 25.00, OrderStatus.DONE, "(21)987875548"));
-            createOrder(new Order(UUID.randomUUID(), new Date(), "João", 25.00, OrderStatus.PENDING, "(27)987556484"));
-            createOrder(new Order(UUID.randomUUID(), new Date(), "Carlos", 25.00, OrderStatus.ORDERED, "(84)998754814"));
+            createOrder(new Order(UUID.randomUUID(), new Date(), "Marcos", 25.00, OrderStatus.DONE, "(21)987875548", 1L));
+            createOrder(new Order(UUID.randomUUID(), new Date(), "João", 25.00, OrderStatus.PENDING, "(27)987556484", 2L));
+            createOrder(new Order(UUID.randomUUID(), new Date(), "Carlos", 25.00, OrderStatus.ORDERED, "(84)998754814", 3L));
         }
         return orderRepository.findAll();
     }
@@ -37,4 +37,7 @@ public class OrderService {
         orderRepository.deleteById(id);
     }
 
+    public List<Order> getAllByBuyerId(Long buyerId) {
+        return orderRepository.findByBuyerId(buyerId);
+    }
 }

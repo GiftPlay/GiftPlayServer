@@ -19,9 +19,10 @@ public class Order {
     private OrderStatus orderStatus;
     private String buyerPhone;
 
+    private Long buyerId;
+
     public Order() {
     }
-
     public Order(UUID id, Date orderDate, String buyerName, Double orderValue, OrderStatus orderStatus, String buyerPhone) {
         this.id = id;
         this.orderDate = orderDate;
@@ -29,6 +30,15 @@ public class Order {
         this.orderValue = orderValue;
         this.orderStatus = orderStatus;
         this.buyerPhone = buyerPhone;
+    }
+    public Order(UUID id, Date orderDate, String buyerName, Double orderValue, OrderStatus orderStatus, String buyerPhone, Long buyerId) {
+        this.id = id;
+        this.orderDate = orderDate;
+        this.buyerName = buyerName;
+        this.orderValue = orderValue;
+        this.orderStatus = orderStatus;
+        this.buyerPhone = buyerPhone;
+        this.buyerId = buyerId;
     }
 
     public UUID getId() {
@@ -77,5 +87,13 @@ public class Order {
 
     public void setBuyerPhone(String buyerPhone) {
         this.buyerPhone = buyerPhone;
+    }
+
+    public Long getBuyerId() {
+        return buyerId;
+    }
+
+    public void setBuyerId(Long buyerId) {
+        this.buyerId = buyerId;
     }
 }

@@ -59,4 +59,11 @@ public class OrderController {
         OrderDtoMobile order = new OrderDtoMobile(orderService.getAll());
         return ResponseEntity.status(HttpStatus.OK).body(order);
     }
+
+    @GetMapping("/order/buyer/{buyerId}")
+    public ResponseEntity<OrderDtoMobile> getAllByBuyerId(@PathVariable Long buyerId) {
+
+        OrderDtoMobile ret = new OrderDtoMobile(orderService.getAllByBuyerId(buyerId));
+        return ResponseEntity.status(HttpStatus.OK).body(ret);
+    }
 }
